@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SQL Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="text-white flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                AI SQL Generator
+            </h1>
+            <p class="text-gray-400 mt-2">Describe what you want in plain English, and the AI will generate the SQL query.</p>
+        </div>
+
+        <div class="glassmorphism rounded-2xl p-6 shadow-2xl">
+            <div class="mb-6">
+                <label for="naturalLanguageInput" class="block text-lg font-medium text-gray-300 mb-2">Your Request:</label>
+                <textarea id="naturalLanguageInput" rows="4" class="w-full p-4 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-white placeholder-gray-500" placeholder="e.g., 'Find all users from California with more than 1000 followers'"></textarea>
+            </div>
+
+            <div class="text-center mb-6">
+                <button id="generateBtn" class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition duration-300 ease-in-out">
+                    <span id="btn-text">Generate SQL</span>
+                    <span id="btn-loader" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                </button>
+            </div>
+
+            <div>
+                <label for="sqlOutput" class="block text-lg font-medium text-gray-300 mb-2">Generated SQL:</label>
+                <div class="relative">
+                    <div id="sqlOutputWrapper" class="w-full p-4 bg-gray-900 border border-gray-700 rounded-lg overflow-x-auto min-h-[150px]">
+                        <pre><code id="sqlOutput" class="text-green-400"></code></pre>
+                    </div>
+                    <div id="loader" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-lg hidden">
+                        <div class="loader"></div>
+                    </div>
+                    <button id="copyBtn" class="absolute top-3 right-3 bg-gray-700 hover:bg-gray-600 text-gray-300 font-semibold py-1 px-3 rounded-md text-sm transition duration-200 hidden">
+                        Copy
+                    </button>
+                </div>
+                 <div id="messageBox" class="mt-4 text-center h-5"></div>
+            </div>
+        </div>
+        <div class="text-center mt-6 text-gray-500 text-sm">
+            Powered by Kartik
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
